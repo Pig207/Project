@@ -4,14 +4,14 @@
 #Project Euler Problems
 
 #Lets the user select a problem
-Problem = input("Type a number to choose a problem. Possible problems: 1 - 3. ")
-print("\n")
+Problem = input("Type a number to choose a problem. Possible problems: 1 - 6 \n")
+print("")
 
 #problem 1
 if (Problem == '1'):
 
     #reads prompt of problem
-    print("If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. \nFind the sum of all the multiples of 3 or 5 below 1000.\n")
+    print("Find the sum of all the multiples of 3 or 5 below 1000.\n")
     #total
     sum = 0
     #runs through every number from 1 to 1000
@@ -79,6 +79,119 @@ elif (Problem == '3'):
     #selects and prints the most recent (so the largest) prime
     primee = str(primes[-1])
     print("\nThe largest prime factor of the number 600851475143 is " + primee)
+
+#problem 4
+elif (Problem == '4'):
+
+    #reads prompt of problem
+    print("Find the largest palindrome made from the product of two 3-digit numbers\n")
+
+    #getting some variables ready 
+    num1 = 100
+    num2 = 100
+    palindromic = 0
+    
+    #runs through all the 3 digit numbers for variable 1
+    while (num1 != 1000):
+        #runs through all the 3 digit numbers for variable 2
+        while (num2 != 1000):
+            #multiplies them together
+            value = num1 * num2
+            #checks if the product is palindromic
+            if str(value) == (str(value))[::-1]:
+                #checks if the palindrome is the highest so far
+                if palindromic < value:
+                    #if so, saves the values to print later
+                    palindromic = value
+                    m1 = str(num1)
+                    m2 = str(num2)
+            #cycles to next number
+            num2 += 1
+        num2 = 100
+        num1 += 1
+
+    #prints out result
+    val = str(value)
+    print("The largest palindrome made from the product of two 3-digit numbers is " + val + "\n" + m1 + " * "  + m2)
+
+#problem 5
+elif (Problem == '5'):
+
+    #reads prompt of problem
+    print ("What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?\n(takes a bit to load)\n")
+
+    #num starts at 1, goes up one at a time
+    num = 1
+
+    #loops until break
+    while 1==1:
+        #goes through denominators 1 through 20, making sure they all are divisible evenly
+        if num % 2 == 0:
+            if num % 3 == 0:
+                if num % 4 == 0:
+                    if num % 5 == 0:
+                        if num % 6 == 0:
+                            if num % 7 == 0:
+                                if num % 8 == 0:
+                                    if num % 9 == 0:
+                                        if num % 10 == 0:
+                                            if num % 11 == 0:
+                                                if num % 12 == 0:
+                                                    if num % 13 == 0:
+                                                        if num % 14 == 0:
+                                                            if num % 15 == 0:
+                                                                if num % 16 == 0:
+                                                                    if num % 17 == 0:
+                                                                        if num % 18 == 0:
+                                                                            if num % 19 == 0:
+                                                                                if num % 20 == 0:
+                                                                                    #prints out result
+                                                                                    nu = str(num)
+                                                                                    print("the smallest positive number that is evenly divisible by all of the numbers from 1 to 20 is " + nu)
+                                                                                    #breaks loop
+                                                                                    break
+        #cycles to next number                                                                        
+        num += 1
+
+#problem 6
+elif (Problem == '6'):  
+
+    #reads prompt of problem
+    print("Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.\n")
+
+    #resets variables
+    num = 1
+    current = 0
+
+    #running through and adding up all the squares
+    while (num != 101):
+        current += num ** 2
+        num += 1
+    #saving this value
+    top = current
+
+    #resets variables
+    num = 1
+    current = 0
+
+    #running through and adding up all the numbers
+    while (num != 101):
+        current += num
+        num += 1
+    #squares result
+    bottom = current ** 2
+
+    #calculates the answer
+    diff = bottom - top
+
+    #converts numbers to strings for print statement
+    diff = str(diff)
+    top = str(top)
+    bottom = str(bottom)
+    
+    #prints out result
+    print("The difference between the sum of the squares of the first one hundred natural numbers and the square of the sum is " + diff + "\n" + bottom + " - " + top + " = " + diff)
+
 
 #problem failed to enter
 else:
