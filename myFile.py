@@ -4,7 +4,7 @@
 #Project Euler Problems
 
 #Lets the user select a problem
-Problem = input("Type a number to choose a problem. Possible problems: 1 - 6 \n")
+Problem = input("Type a number to choose a problem. Possible problems: 1 - 8 \n")
 print("")
 
 #problem 1
@@ -192,7 +192,111 @@ elif (Problem == '6'):
     #prints out result
     print("The difference between the sum of the squares of the first one hundred natural numbers and the square of the sum is " + diff + "\n" + bottom + " - " + top + " = " + diff)
 
+#problem 7
+elif (Problem == '7'):  
 
+    #reads prompt of problem
+    print("What is the 10,001st prime number?\n(takes a bit to load)\n")
+
+    '''getting our variables ready. 
+    The reason I already start at a prime counted is because I'm skipping 2 and starting at 3.
+    This allows the line 'for i in range(2, num):' to function correctly as num has to be at least 1 number larger than 2.'''
+    primecount = 1
+    num = 3
+
+    #produces primes until the 10,001st prime is made
+    while (primecount != 10001):
+        #runs through all denominators EXCEPT 1 and itself (for efficient prime calculations, saving computing time)
+        for i in range(2, num):
+            #assumes number is prime, tries to prove otherwise
+            prime = True
+            #if the number is divisible by any other (besides 1 and intself), the number is proven to not be prime and the for loop is broken to save time
+            if num % i == 0:
+                prime = False
+                break
+        #checks if the number is prime
+        if (prime == True):
+            #adds to the prime count and saves the number as most recent prime
+            primecount += 1
+            pri = str(num)
+        #goes onto the next number
+        num += 1
+
+    #prints out result
+    print("The 10,001st prime number is " + pri)
+        
+#problem 8
+elif (Problem == '8'):  
+
+    #reads prompt of problem
+    print("Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?\n")
+
+    #the 1000 digit number
+    number = '7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450'
+
+    #setting up counting variables
+    temp = 0
+    final = 0
+
+    #setting up 1-13 positional variables
+    f1 = 0
+    f2 = 1
+    f3 = 2
+    f4 = 3
+    f5 = 4
+    f6 = 5
+    f7 = 6
+    f8 = 7
+    f9 = 8
+    f10 = 9
+    f11 = 10
+    f12 = 11
+    f13= 12
+    
+    #runs until count is over the 1000th digit place
+    while (f13 != 1000):
+        #multiplied 13 adjacent digits
+        temp = int(number[f1]) * int(number[f2]) * int(number[f3]) * int(number[f4]) * int(number[f5]) * int(number[f6]) * int(number[f7]) * int(number[f8]) * int(number[f9]) * int(number[f10]) * int(number[f11]) * int(number[f12]) * int(number[f13])
+        
+        #moves all the 1-13 positional variables up 1 place
+        f1 += 1
+        f2 += 1
+        f3 += 1
+        f4 += 1
+        f5 += 1
+        f6 += 1
+        f7 += 1
+        f8 += 1
+        f9 += 1
+        f10 += 1
+        f11 += 1
+        f12 += 1
+        f13 += 1
+
+        #sees if this is the greatest number found so far
+        if (temp > final):
+            #if so, saves it
+            final = temp
+
+            #saves the specific place values for these numbers, as they product the greatest product
+            ff1 = str(f1)
+            ff2 = str(f2)
+            ff3 = str(f3)
+            ff4 = str(f4)
+            ff5 = str(f5)
+            ff6 = str(f6)
+            ff7 = str(f7)
+            ff8 = str(f8)
+            ff9 = str(f9)
+            ff10 = str(f10)
+            ff11 = str(f11)
+            ff12 = str(f12)
+            ff13 = str(f13)
+            ffinal = str(final)
+
+    #prints out our solution
+    print("The thirteen adjacent digits in the 1000-digit number that have the greatest product have positions " + ff1 + ", " + ff2 + ", " + ff3 + ", " + ff4 + ", " + ff5 + ", " + ff6 + ", " + ff7 + ", " + ff8 + ", " + ff9 + ", " + ff10 + ", " + ff11 + ", " + ff12 + ", and " + ff13 + "\nThe value of this product is " + ffinal)
+   
 #problem failed to enter
 else:
     print("Error: You didn't input a problem correctly")
