@@ -4,7 +4,7 @@
 #Project Euler Problems
 
 #Lets the user select a problem
-Problem = input("Type a number to choose a problem. Possible problems: 1 - 8 \n")
+Problem = input("Type a number to choose a problem. Possible problems: 1 - 10 \n")
 print("")
 
 #problem 1
@@ -296,7 +296,81 @@ elif (Problem == '8'):
 
     #prints out our solution
     print("The thirteen adjacent digits in the 1000-digit number that have the greatest product have positions " + ff1 + ", " + ff2 + ", " + ff3 + ", " + ff4 + ", " + ff5 + ", " + ff6 + ", " + ff7 + ", " + ff8 + ", " + ff9 + ", " + ff10 + ", " + ff11 + ", " + ff12 + ", and " + ff13 + "\nThe value of this product is " + ffinal)
-   
+
+#problem 9
+elif (Problem == '9'):  
+
+    #reads prompt of problem
+    print("There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc.")
+
+    #variables for a, b, and c to be increased
+    numa = 1
+    numb = 1
+    numc = 1
+    #To be used to see if the answer has been found, as to not waste time
+    found = False
+    
+    #runs until answer is found
+    while found == False:
+
+        #running through c, if it gets too big b goes up and c gets set to b
+        numc += 1
+        if numc > 500:
+            numc = numb
+            numb += 1
+
+        #running through b, if it gets too big a goes up and b gets set to a
+        if numb > 500:
+            numb = numa
+            numa += 1
+
+        #if the variables form a Pythagorean triplet
+        if (numa ** 2 + numb ** 2 == numc ** 2):
+            #if they add to 1000
+            if (numa + numb + numc == 1000):
+                found = True
+                #getting variables ready to be printed
+                prod = numa * numb * numc
+                prod = str(prod)
+                numa = str(numa)
+                numb = str(numb)
+                numc = str(numc)
+
+    #prints out our solution
+    print("the three numbers are " + numa + ", " + numb + ", and " + numc + "\nThe product abc is " + prod)
+
+#problem 10
+elif (Problem == '10'):
+
+    #reads prompt of problem
+    print("Find the sum of all the primes below two million.")
+
+    #gets counting variables ready. This code is heavily reused from #7
+    summ = 2
+    numm = 3
+    #while our number being tested for primeness is under 2 million
+    while (numm < 2000000):
+        #tests if the number is prime 
+        for i in range(2, numm):
+            #assumes it is prime, tries to prove otherwise
+            prime = True
+            if numm % i == 0:
+                #if it is composite, breaks to save time
+                prime = False
+                break
+        #if the number is prime, adds it to the total so far
+        if (prime == True):
+            summ += numm
+        #moves onto the next candidate for a prime
+        numm += 1
+    
+    #gets variable ready to print
+    summ = str(summ)
+
+    #prints out our solution
+    print("The sum of all the primes below two million is " + summ)
+
+
 #problem failed to enter
 else:
     print("Error: You didn't input a problem correctly")
