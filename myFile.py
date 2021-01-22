@@ -1,7 +1,7 @@
 #Dean Woelfle
 #12/16/2020
 #Lab 4
-#Project Euler Problems 1 - 13
+#Project Euler Problems 1 - 13.
 
 #Lets the user select a problem
 Problem = input("Type a number to choose a problem. Possible problems: 1 - 13 \n")
